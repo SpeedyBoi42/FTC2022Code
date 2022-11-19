@@ -23,7 +23,8 @@ public class ColorSensorDraft extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
     //constants for driving motors
-    //some of these numbers def need changing, like diameter, and counts per motor rev
+    //some of these numbers def need changing, like diameter
+    //for the counts per motor rev, i found 560 in the documentation for our specific motors we use
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;     // No External Gearing.
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
