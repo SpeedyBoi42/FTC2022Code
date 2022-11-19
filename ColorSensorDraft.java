@@ -79,7 +79,7 @@ public class ColorSensorDraft extends LinearOpMode {
         //   and then strafe to the right because i was planning on putting the color sensor in the
         //   front left corner so it doesn't come close to causing any issues with the picker upper
         encoderDrive(DRIVE_SPEED, 24, 24, 24, 24, 5.0);
-        encoderDrive(TURN_SPEED, 10, -10, -10, 10, 4.0);
+        encoderDrive(TURN_SPEED, 8.5, -8.5, -8.5, 8.5, 4.0);
 
         /* NOT USING THIS (just a hardcoded part in case we cant get the encoders to work,
                but this still doesn't have the right time values)
