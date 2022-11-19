@@ -132,9 +132,9 @@ public class ColorSensorDraft extends LinearOpMode {
         if (r){
             telemetry.addLine("The color detected was red.");
         } else if (g) {
-            telemetry.addLine("The color detected was red.");
+            telemetry.addLine("The color detected was green.");
         } else if (b) {
-            telemetry.addLine("The color detected was red.");
+            telemetry.addLine("The color detected was blue.");
         }
 
     }
