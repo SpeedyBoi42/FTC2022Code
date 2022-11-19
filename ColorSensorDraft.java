@@ -28,7 +28,7 @@ public class ColorSensorDraft extends LinearOpMode {
     static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;     // No External Gearing.
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
-            (WHEEL_DIAMETER_INCHES * 3.1415);
+            (WHEEL_DIAMETER_INCHES * Math.PI);
     static final double     DRIVE_SPEED             = 0.6;
     static final double     TURN_SPEED              = 0.5;
 
@@ -75,10 +75,14 @@ public class ColorSensorDraft extends LinearOpMode {
         runtime.reset();
 
         //trying to move with encoders :/
+        //the exact inches are off but the overall idea here is to move forward to the cone
+        //   and then strafe to the right because i was planning on putting the color sensor in the
+        //   front left corner so it doesn't come close to causing any issues with the picker upper
         encoderDrive(DRIVE_SPEED, 24, 24, 24, 24, 5.0);
         encoderDrive(TURN_SPEED, 10, -10, -10, 10, 4.0);
 
-        /* NOT USING THIS
+        /* NOT USING THIS (just a hardcoded part in case we cant get the encoders to work,
+               but this still doesn't have the right time values)
         //move forward (w/o encoder)
         while (runtime.seconds() < 1.5){
             frontRight.setPower(0.7);
@@ -101,6 +105,8 @@ public class ColorSensorDraft extends LinearOpMode {
 
 
         //shows the color values that color sensor can see
+        //so in theory, this would show the color values that the sensor sees at the time it was read
+        //   this can be used to see what should be in those if statments below cuz idk where 20 came from
         telemetry.addData("red", color.red());
         telemetry.addData("green", color.blue());
         telemetry.addData("blue", color.green());
@@ -111,7 +117,8 @@ public class ColorSensorDraft extends LinearOpMode {
         boolean b = false;
         boolean g = false;
 
-        //figuring out what color is in front of it
+        //figuring out what color is in front of it and setting the correct boolean to true
+        //i am completly unsure what unit it is measured in so idk what 20 means??
         if (color.red() > 20) {
             r = true;
         } else if (color.blue() > 20){
@@ -121,6 +128,7 @@ public class ColorSensorDraft extends LinearOpMode {
         }
 
         //from here, do a specific parking based on what color was determined to be in front (above code)
+        //for right now, im just printing out in the app what path it chose to see if it got the right one
         if (r){
             telemetry.addLine("The color detected was red.");
         } else if (g) {
@@ -132,6 +140,7 @@ public class ColorSensorDraft extends LinearOpMode {
     }
 
     //this is trying to code the program for moving using encoders
+    //remember, this all only works in theory and has not been tested
     public void encoderDrive(double speed, double fleftInches, double bleftInches,
                              double frightInches, double brightInches, double timeoutS) {
         //intializing variables
