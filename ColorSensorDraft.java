@@ -75,9 +75,16 @@ public class ColorSensorDraft extends LinearOpMode {
         runtime.reset();
 
         //trying to move with encoders :/
+        
         //the exact inches are off but the overall idea here is to move forward to the cone
         //   and then strafe to the right because i was planning on putting the color sensor in the
         //   front left corner so it doesn't come close to causing any issues with the picker upper
+        
+        //       (also, there is a calculation to figure out how many inches to move based on the angle you want to go
+        //           you take the sin of the angle, so sin(90) = 1. and then you multiply by i think the width of the robot
+        //           so for this, if you wanted to turn 90 degrees, you would be moving roughly 17 inches 
+        //           but i'm bypassing the annoying process of turning and then turning back by just strafing into position)
+        
         encoderDrive(DRIVE_SPEED, 24, 24, 24, 24, 5.0);
         encoderDrive(TURN_SPEED, 8.5, -8.5, -8.5, 8.5, 4.0);
 
